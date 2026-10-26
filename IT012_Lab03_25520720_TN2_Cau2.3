@@ -1,0 +1,32 @@
+# Mã ngu?n 3 - ?i?n n?ng tiêu th? c?a m?t h? gia ?ình (s? li?u gi? l?p, kWh)
+
+  # Bi?n        Thanh ghi
+  # reading0    $s0     ??u tháng 1
+  # reading1    $s1     ??u tháng 2
+  # reading2    $s2     ??u tháng 3
+  # reading3    $s3     cu?i tháng 3
+  # usage1      $t0     ?i?n n?ng tháng 1
+  # usage2      $t1     ?i?n n?ng tháng 2
+  # usage3      $t2     ?i?n n?ng tháng 3
+  # total       $t3     usage1 + usage2 + usage3
+
+  .text
+  .globl main
+
+  main:
+      addi $s0, $zero, 1200
+      addi $s1, $zero, 1350
+      addi $s2, $zero, 1475
+      addi $s3, $zero, 1640
+
+      # Tính ?i?n n?ng tiêu th? t?ng tháng
+      sub  $t0, $s1, $s0   
+      sub  $t1, $s2, $s1   
+      sub  $t2, $s3, $s2  
+
+      # Tính t?ng ?i?n n?ng tiêu th?
+      add  $t3, $t0, $t1  
+      add  $t3, $t3, $t2   
+
+      li   $v0, 10
+      syscall
